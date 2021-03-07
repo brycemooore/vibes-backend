@@ -72,13 +72,18 @@ WSGI_APPLICATION = 'vibesbe.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+from dotenv import load_dotenv
+load_dotenv()
+import os
+db_user = os.environ.get("db_user")
+db_password = os.environ.get("db_password")
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'vibes',
-        'USER': 'postgres',
-        'PASSWORD': '123'
+        'USER': db_user,
+        'PASSWORD': db_password
     }
 }
 
